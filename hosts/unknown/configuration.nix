@@ -7,9 +7,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../modules/nixos/nvidia.nix
-      ../../modules/nixos/fonts.nix
-      ../../modules/nixos/boot.nix
+      ../../modules/nixos/defaults.nix
     ];
 
   nix.settings = {
@@ -51,7 +49,7 @@
   # Enable sound.
   #services.pulseaudio.enable = true;
   security.rtkit.enable = true;
-  # OR
+  # security.polkit.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -65,38 +63,28 @@
         "video"
         "input"
       ]; # Enable ‘sudo’ for the user.
-      packages = with pkgs; [
-        tree
-        vscode
-      ];
     };
   };
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "unknown" = import ../../modules/nixos/home.nix;
+      "unknown" = import ../../modules/home/home.nix;
     };
   };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    neovim
-    wget
+    cargo
     git
     nodejs
     python3
     pkgs.stdenv.cc
     rustc
-    cargo
+    wget
     unzip
-    alacritty
-    kitty
-    wofi
-    starship
-    dunst
-    libnotify
-    wl-clipboard
+    jq
+    socat
   ];
 
   # Allow Unfree

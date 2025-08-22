@@ -1,0 +1,9 @@
+{ ... }:
+
+{
+  imports = [
+    ./boot.nix
+    ./nvidia.nix
+    ./fonts.nix
+  ];
+}

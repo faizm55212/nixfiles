@@ -23,6 +23,7 @@ in
       enable_audio_bell = false;
       close_on_child_death = true;
       cursor_blink_interval = 0;
+      confirm_os_window_close = 0;
       enabled_layouts = "fat, tall, vertical";
       notify_on_cmd_finish = "unfocused";
       scrollback_pager = "less --chop-long-lines --raw-control-chars +INPUT_LINE_NUMBER";
