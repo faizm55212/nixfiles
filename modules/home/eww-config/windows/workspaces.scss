@@ -1,0 +1,60 @@
+.workspaces {
+  min-height: dpi(3px);
+  widget {
+    .indicator {
+      opacity: 0.3;
+      transition-duration: 0.2s;
+
+      &.focused {
+        opacity: 1;
+      }
+      &.empty {
+        opacity: 0;
+      }
+      &.round-right {
+        border-bottom-right-radius: dpi(10px);
+      }
+      &.round-left {
+        border-bottom-left-radius: dpi(10px);
+      }
+
+      &:not(.focused):hover {
+        opacity: 0.6;
+      }
+      &.empty:hover {
+        opacity: 0.2;
+      }
+    }
+
+    &:nth-child(1) .indicator {
+      background: #9e0142;
+    }
+    &:nth-child(2) .indicator {
+      background: #c64756;
+    }
+    &:nth-child(3) .indicator {
+      background: #f46d43;
+    }
+    &:nth-child(4) .indicator {
+      background: #f08d2a;
+    }
+    &:nth-child(5) .indicator {
+      background: #be9a36;
+    }
+    &:nth-child(6) .indicator {
+      background: #c8ee0d;
+    }
+    &:nth-child(7) .indicator {
+      background: #abdda4;
+    }
+    &:nth-child(8) .indicator {
+      background: #66c2a5;
+    }
+    &:nth-child(9) .indicator {
+      background: #3288bd;
+    }
+    &:nth-child(10) .indicator {
+      background: #5e4fa2;
+    }
+  }
+}
