@@ -5,13 +5,13 @@
 ; >>> Widgets
 ; -----------
 ; (include "widgets/circular-symbol-icon.yuck")
-; (include "widgets/circular-symbol-with-text.yuck")
+(include "windows/volumes.yuck")
 
 ; >>> Windows
 ; -----------
 ; >> Bars
 (include "windows/workspaces.yuck")
-; (include "windows/bottom-bar.yuck")
+(include "windows/bottom-bar.yuck")
 
 ; >> Toggleable windows
 ; (include "windows/powermenu.yuck")

@@ -15,7 +15,9 @@
   }
 }
 
+@import 'windows/volumes.scss';
 @import 'windows/workspaces.scss';
+@import 'windows/bottom-bar.scss';
 
 // Global Styles
 window {

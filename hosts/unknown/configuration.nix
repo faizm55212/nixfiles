@@ -21,20 +21,16 @@
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
-
+  time = {
+    timeZone = "Asia/Kolkata";
+    hardwareClockInLocalTime = true;
+  };
+  
   # Enabled Nvidia Drivers for my Desktop
   services = {
     xserver = {
       enable = false;
       videoDrivers = [ "nvidia" ];
-    };
-    pipewire = {
-      enable = true;
-      pulse.enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      jack.enable = true;
     };
   };
 

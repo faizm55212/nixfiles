@@ -10,15 +10,16 @@ open_all() {
   # It is important to open the background widget last to avoid it being above other widgets
   eww open-many \
     workspaces \
+    bottom-bar \
     ;
   # sidebar-activator \
   # background \
 }
 
 # Start eww and widgets
-sleep 1
 pkill eww
 eww daemon
+sleep 3
 open_all
 
 # Start eww script daemons if not already running
@@ -46,6 +47,7 @@ start() {
 
 # Daemons
 start hypr-workspaces.sh
+start hypr-volume.sh
 #start sway-modes.py
 #start sway-split-indicator.py
 #start sway-dock.py

@@ -46,4 +46,13 @@
   # Scroll through existing workspaces with SUPER + Scroll
   "${super}, mouse_down, workspace, e+1"
   "${super}, mouse_up, workspace, e-1"
+
+  # Volume and media controls
+  ",XF86AudioRaiseVolume,exec,bash -c '(( $(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk \"{print int(\\$2)}\") >= 100 )) && : || wpctl set-volume @DEFAULT_AUDIO_SINK@ 5+'"
+  ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5-"
+  ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  ",XF86AudioPlay, exec, playerctl play-pause"
+  ",XF86AudioPause, exec, playerctl play-pause"
+  ",XF86AudioNext, exec, playerctl next"
+  ",XF86AudioPrev, exec, playerctl previous"
 ]
