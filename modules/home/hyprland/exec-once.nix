@@ -1,9 +1,11 @@
-{ eww }:
+# { eww }:
+{ ... }:
 [
   # Notification Daemon
-  "dunst &"
+  # "dunst &"
 
   # Eww stuff
-  "${eww}/init.sh"
+  # "${eww}/init.sh"
+  "systemctl --user restart caelestia"
 ]
 

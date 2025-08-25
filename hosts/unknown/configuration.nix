@@ -32,6 +32,15 @@
       enable = false;
       videoDrivers = [ "nvidia" ];
     };
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --remember --remember-session --time --cmd hyprland";
+          user = "greeter";
+        };
+      };
+    };
   };
 
   programs = {
@@ -54,17 +63,27 @@
   users.users = {
     unknown = {
       isNormalUser = true;
+      shell = pkgs.fish;
       extraGroups = [
         "wheel"
         "video"
+        "audio"
         "input"
-      ]; # Enable ‘sudo’ for the user.
+        "networkmanager"
+        "libvirtd"
+      ];
+      ignoreShellProgramCheck = true;
     };
   };
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "unknown" = import ../../modules/home/home.nix;
+      "unknown" = { ... }: {
+        imports = [ 
+          ../../modules/home/home.nix
+          inputs.caelestia-shell.homeManagerModules.default
+        ];
+      };
     };
   };
 
@@ -73,60 +92,27 @@
   environment.systemPackages = with pkgs; [
     cargo
     git
+    jq
+    libvirt
     nodejs
     python3
     pkgs.stdenv.cc
     rustc
-    wget
     unzip
-    jq
-    socat
+    wget
   ];
+
+  # Virtualization via libvirt
+  virtualisation.libvirtd = {
+    enable = true;
+    extraConfig = ''
+      unix_sock_group = "libvirtd"
+      unix_sock_ro_perms = "0777"
+      unix_sock_rw_perms = "0770"
+    '';
+  };
 
   # Allow Unfree
   nixpkgs.config.allowUnfree = true;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
-
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
-  # to actually do that.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  # and migrated your data accordingly.
-  #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "25.05"; # Did you read the comment?
-
+  system.stateVersion = "25.05";
 }

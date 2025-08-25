@@ -5,7 +5,7 @@ let
   menu = "rofi -show drun";
   super = "SUPER";
   super_shift = "SUPER_SHIFT";
-  eww = "$HOME/.config/eww/scripts";
+  # eww = "$HOME/.config/eww/scripts";
 in
 {
   wayland.windowManager.hyprland = {
@@ -26,7 +26,7 @@ in
         layout = "dwindle";
       };
       exec-once = import ./exec-once.nix{
-        inherit eww;
+        # inherit eww;
       };
       animations = import ./animations-default.nix;
       decoration = {
@@ -58,8 +58,8 @@ in
       };
 
       misc = {
-        force_default_wallpaper = -1;
-        disable_hyprland_logo = false;
+        force_default_wallpaper = 0;
+        disable_hyprland_logo = true;
       };
 
       input = {
@@ -70,14 +70,30 @@ in
         follow_mouse = 1;
         sensitivity = 0;
       };
+
+      exec = [ "hyprctl dispatch submap global" ];
+
+      # Define submap
+      submap = "global";
       bind = import ./binds.nix {
         inherit terminal fileManager menu super super_shift;
       };
       bindm = [
-        # Move/resize window with SUPER + LMB/RMB and dragging
         "${super}, mouse:272, movewindow"
         "${super}, mouse:273, resizewindow"
       ];
+
+      bindin = [
+        "Super, mouse:272, global, caelestia:launcherInterrupt"
+        "Super, mouse:273, global, caelestia:launcherInterrupt"
+        "Super, mouse:274, global, caelestia:launcherInterrupt"
+        "Super, mouse:275, global, caelestia:launcherInterrupt"
+        "Super, mouse:276, global, caelestia:launcherInterrupt"
+        "Super, mouse:277, global, caelestia:launcherInterrupt"
+        "Super, mouse_up, global, caelestia:launcherInterrupt"
+        "Super, mouse_down, global, caelestia:launcherInterrupt"
+      ];
+
       windowrule = import ./windowrules.nix;
     };
   };

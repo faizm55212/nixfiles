@@ -4,7 +4,7 @@
   # This rule is a template for a more targeted approach
   "noblur, class:^(\bresolve\b)$, xwayland:1" # Window rule for just resolve
   "tag +file-manager, class:^([Tt]hunar|org.gnome.Nautilus|[Pp]cmanfm-qt)$"
-  "tag +terminal, class:^(Alacritty|kitty)$"
+  "tag +terminal, class:^(foot|kitty)$"
   "tag +browser, class:^(Brave-browser(-beta|-dev|-unstable)?)$"
   "tag +browser, class:^([Ff]irefox|org.mozilla.firefox|[Ff]irefox-esr)$"
   "tag +browser, class:^([Gg]oogle-chrome(-beta|-dev|-unstable)?)$"

@@ -3,6 +3,7 @@
 {
   programs.bash = {
     enable = true;
+    enableCompletion = true;
     shellAliases = {
       ll = "ls -alF";
       vim = "nvim";

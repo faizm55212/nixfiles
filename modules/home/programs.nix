@@ -6,9 +6,10 @@
     userName = "faizm55212";
     userEmail = "faizm55212@gmail.com";
   };
-
   programs.starship = {
     enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
     settings = {
       add_newline = false;
       character = {
@@ -17,7 +18,6 @@
       };
     };
   };
-
   programs.ssh = {
     enable = true;
     matchBlocks = {

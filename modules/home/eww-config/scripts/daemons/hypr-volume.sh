@@ -8,7 +8,7 @@ CLOSER_PID=""
 update_osd() {
   local raw volume muted
   raw=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
-  volume=$(echo "$raw" | grep -oP '\d+\.\d+' | cut -d. -f1)
+  volume=$(echo "$raw" | grep -oP '\d+\.\d+' | cut -d. -f2)
   muted=$(echo "$raw" | [[ $(grep MUTED) ]] && echo true || echo false)
   eww update volume="$volume"
   eww update muted="$muted"

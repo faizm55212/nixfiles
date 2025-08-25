@@ -1,5 +1,7 @@
 { super, super_shift, terminal, fileManager, menu }:
 [
+   "${super}, SPACE, exec, caelestia shell drawers toggle launcher"
+
   "${super}, X, exec, ${terminal}"
   "${super_shift}, Q, killactive"
   "CTRL_ALT, Q, exec, sh -c \"hyprctl dispatch exit && rm -rf /run/user/1000/hypr \""
@@ -48,8 +50,8 @@
   "${super}, mouse_up, workspace, e-1"
 
   # Volume and media controls
-  ",XF86AudioRaiseVolume,exec,bash -c '(( $(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk \"{print int(\\$2)}\") >= 100 )) && : || wpctl set-volume @DEFAULT_AUDIO_SINK@ 5+'"
-  ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5-"
+  ",XF86AudioRaiseVolume,exec,bash -c '(( $(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk \"{print int(\\$2)}\") >= 1 )) && : || wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+'"
+  ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"
   ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   ",XF86AudioPlay, exec, playerctl play-pause"
   ",XF86AudioPause, exec, playerctl play-pause"

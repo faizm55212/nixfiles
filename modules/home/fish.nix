@@ -1,0 +1,37 @@
+{ config, pkgs, ... }:
+
+{
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      starship init fish | source
+      set -gx TERM xterm-kitty
+      cat ~/.local/state/caelestia/sequences.txt 2> /dev/null
+    '';
+    shellAliases = {
+      ll = "ls -alF";
+      vim = "nvim";
+      v = "nvim";
+      sv = "sudo -E nvim";
+      update = "sudo nixos-rebuild switch --flake /home/unknown/nixfiles#unknown";
+      update-boot = "sudo nixos-rebuild boot --flake /home/unknown/nixfiles#unknown";
+      nix-gc = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
+      nix-store-o = "sudo nix store optimise && nix store optimise";
+      flake-update = "nix flake update /home/unknown/nixfiles";
+    };
+    functions = {
+      fish_greeting = "";
+      sudo = {
+        body = ''
+          if test "$argv" = !!
+            echo sudo $history[1]
+            eval command sudo $history[1]
+          else
+            command sudo $argv
+          end
+        '';
+        description = "Replacement for Bash 'sudo !!' command to run last command using sudo."; 
+      };
+    };
+  };
+}

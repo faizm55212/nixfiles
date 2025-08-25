@@ -2,7 +2,8 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; 
+    caelestia-shell.url = "github:caelestia-dots/shell";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -10,7 +11,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, caelestia-shell, ... }@inputs: {
     # use "nixos", or your hostname as the name of the configuration
     # it's a better practice than "default" shown in the video
     nixosConfigurations.unknown = nixpkgs.lib.nixosSystem {
@@ -19,6 +20,7 @@
       modules = [
         ./hosts/unknown/configuration.nix
         inputs.home-manager.nixosModules.default
+        # caelestia-shell.homeManagerModules.default
       ];
     };
   };

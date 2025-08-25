@@ -1,11 +1,9 @@
-{ config, ... }:
+{ ... }:
 
-let
-  inherit (config.lib.stylix.colors.withHashtag) base00;
-in
 {
   programs.kitty = {
     enable = true;
+    shellIntegration.enableFishIntegration = true;
     settings = {
       # Font config
       font_family = "Mononoki Nerd Font Mono";
