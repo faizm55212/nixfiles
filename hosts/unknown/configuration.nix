@@ -51,13 +51,7 @@
     firefox.enable = true;
   };
 
-  # Enable sound.
-  #services.pulseaudio.enable = true;
   security.rtkit.enable = true;
-  # security.polkit.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
@@ -71,6 +65,7 @@
         "input"
         "networkmanager"
         "libvirtd"
+        "i2c"
       ];
       ignoreShellProgramCheck = true;
     };
@@ -82,6 +77,7 @@
         imports = [ 
           ../../modules/home/home.nix
           inputs.caelestia-shell.homeManagerModules.default
+          inputs.catppuccin.homeModules.catppuccin
         ];
       };
     };
@@ -91,6 +87,7 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     cargo
+    ddcutil
     git
     jq
     libvirt
@@ -100,6 +97,12 @@
     rustc
     unzip
     wget
+    hicolor-icon-theme
+    papirus-icon-theme
+    (catppuccin-papirus-folders.override {
+      accent = "peach";
+      flavor = "mocha";
+    })
   ];
 
   # Virtualization via libvirt
@@ -110,6 +113,25 @@
       unix_sock_ro_perms = "0777"
       unix_sock_rw_perms = "0770"
     '';
+  };
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config.common.default = [
+      "hyprland"
+      "gtk"
+    ];
+  };
+  catppuccin = {
+    cache.enable = true;
+    grub.enable = true;
+    accent = "${lib.strings.toLower values.catppuccinAccent}";
+    flavor = "${lib.strings.toLower values.catppuccinFlavor}";
   };
 
   # Allow Unfree

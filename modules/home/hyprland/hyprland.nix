@@ -14,7 +14,6 @@ in
     xwayland.enable = true;
     systemd.enable = false;
     settings = {
-
       general = {
         gaps_in = 5;
         gaps_out = 10;
@@ -47,21 +46,17 @@ in
           vibrancy = 0.1696;
         };
       };
-
       dwindle = {
         pseudotile = true;
         preserve_split = true;
       };
-
       master = {
         new_status = true;
       };
-
       misc = {
         force_default_wallpaper = 0;
         disable_hyprland_logo = true;
       };
-
       input = {
         kb_layout = "us";
         numlock_by_default = true;
@@ -70,9 +65,7 @@ in
         follow_mouse = 1;
         sensitivity = 0;
       };
-
       exec = [ "hyprctl dispatch submap global" ];
-
       # Define submap
       submap = "global";
       bind = import ./binds.nix {
@@ -82,7 +75,6 @@ in
         "${super}, mouse:272, movewindow"
         "${super}, mouse:273, resizewindow"
       ];
-
       bindin = [
         "Super, mouse:272, global, caelestia:launcherInterrupt"
         "Super, mouse:273, global, caelestia:launcherInterrupt"
@@ -93,8 +85,12 @@ in
         "Super, mouse_up, global, caelestia:launcherInterrupt"
         "Super, mouse_down, global, caelestia:launcherInterrupt"
       ];
-
       windowrule = import ./windowrules.nix;
+      env = [
+        "NIXOS_OZONE_WL, 1"
+        "ELECTRON_OZONE_PLATFORM_HINT,wayland"
+        "QS_ICON_THEME, Papirus"
+      ];
     };
   };
 }

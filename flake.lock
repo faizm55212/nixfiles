@@ -31,16 +31,36 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1756032184,
-        "narHash": "sha256-lSI3Wnk9c1n1Nsm8S8Sfx1QbGT7ILGwFlT5HQmHSzIQ=",
-        "owner": "caelestia-dots",
-        "repo": "shell",
-        "rev": "54921ee354827aac71a435ad9fe903b8667901fc",
+        "lastModified": 1756125201,
+        "narHash": "sha256-nABhl3qhedKCYVn39UTwb485ACE87Fbnyjq3fymslAI=",
+        "owner": "faizm55212",
+        "repo": "caelestia-shell",
+        "rev": "37f21c8b9b50eb65bb7440be907e29edc39a66d9",
         "type": "github"
       },
       "original": {
-        "owner": "caelestia-dots",
-        "repo": "shell",
+        "owner": "faizm55212",
+        "repo": "caelestia-shell",
+        "type": "github"
+      }
+    },
+    "catppuccin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1756028045,
+        "narHash": "sha256-j6ehEdta7YnXtk42cdYQEElCKfnbe24yfeHJwszgyes=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "ad015344f592b6ebb82de853b747dd577926ec77",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
         "type": "github"
       }
     },
@@ -120,6 +140,7 @@
     "root": {
       "inputs": {
         "caelestia-shell": "caelestia-shell",
+        "catppuccin": "catppuccin",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2"
       }

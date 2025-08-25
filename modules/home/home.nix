@@ -7,12 +7,13 @@ in
 {
   imports = [
     # ./eww.nix
-    ./caelestia.nix
-    ./hyprland/hyprland.nix
     ./bash.nix
-    ./kitty.nix
+    ./caelestia.nix
     ./fish.nix
-    ./programs.nix
+    ./hyprland/hyprland.nix
+    ./kitty.nix
+    ./misc.nix
+    ./theme.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -30,7 +31,6 @@ in
     libnotify
     neovim
     openssl
-    pavucontrol
     qemu_kvm
     starship
     tree
@@ -41,6 +41,8 @@ in
   home.sessionVariables = {
     EDITOR = "nvim";
     LIBVIRT_DEFAULT_URI = "qemu:///system";
+    QT_QPA_PLATFORM = "wayland;xcb";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
   # Let Home Manager install and manage itself

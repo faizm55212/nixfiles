@@ -21,6 +21,8 @@ in
       launcher = {
         enable = true;
       };
+      osd.sliders.showBrightnessSlider = true;
+      services.useFahrenheit = false;
     };
     cli = {
       enable = true;

@@ -17,7 +17,7 @@
       update-boot = "sudo nixos-rebuild boot --flake /home/unknown/nixfiles#unknown";
       nix-gc = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
       nix-store-o = "sudo nix store optimise && nix store optimise";
-      flake-update = "nix flake update /home/unknown/nixfiles";
+      flake-update = "cd ~/nixfiles && sudo nix flake update";
     };
     functions = {
       fish_greeting = "";

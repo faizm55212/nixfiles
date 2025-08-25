@@ -3,24 +3,24 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; 
-    caelestia-shell.url = "github:caelestia-dots/shell";
-
+    caelestia-shell.url = "github:faizm55212/caelestia-shell";
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, caelestia-shell, ... }@inputs: {
-    # use "nixos", or your hostname as the name of the configuration
-    # it's a better practice than "default" shown in the video
+  outputs = { self, nixpkgs, caelestia-shell, catppuccin, ... }@inputs: {
     nixosConfigurations.unknown = nixpkgs.lib.nixosSystem {
-      #  system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
         ./hosts/unknown/configuration.nix
         inputs.home-manager.nixosModules.default
-        # caelestia-shell.homeManagerModules.default
+        inputs.catppuccin.nixosModules.catppuccin
       ];
     };
   };
