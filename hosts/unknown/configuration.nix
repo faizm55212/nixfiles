@@ -77,7 +77,6 @@
         imports = [ 
           ../../modules/home/home.nix
           inputs.caelestia-shell.homeManagerModules.default
-          inputs.catppuccin.homeModules.catppuccin
         ];
       };
     };
@@ -93,16 +92,10 @@
     libvirt
     nodejs
     python3
-    pkgs.stdenv.cc
+    stdenv.cc
     rustc
     unzip
     wget
-    hicolor-icon-theme
-    papirus-icon-theme
-    (catppuccin-papirus-folders.override {
-      accent = "peach";
-      flavor = "mocha";
-    })
   ];
 
   # Virtualization via libvirt
@@ -117,21 +110,15 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-wlr
-      pkgs.xdg-desktop-portal-gtk
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
     ];
     config.common.default = [
       "hyprland"
       "gtk"
     ];
-  };
-  catppuccin = {
-    cache.enable = true;
-    grub.enable = true;
-    accent = "${lib.strings.toLower values.catppuccinAccent}";
-    flavor = "${lib.strings.toLower values.catppuccinFlavor}";
   };
 
   # Allow Unfree

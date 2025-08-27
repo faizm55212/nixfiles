@@ -25,14 +25,21 @@ in
 
   home.packages = with pkgs; [
     caelestia-shell
+    docker
+    grim
     guestfs-tools
+    helm
     kitty
+    kubernetes
     libguestfs
     libnotify
     neovim
     openssl
     qemu_kvm
     starship
+    swappy
+    terraform
+    terragrunt
     tree
     virt-manager
     vscode
@@ -41,8 +48,6 @@ in
   home.sessionVariables = {
     EDITOR = "nvim";
     LIBVIRT_DEFAULT_URI = "qemu:///system";
-    QT_QPA_PLATFORM = "wayland;xcb";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
   # Let Home Manager install and manage itself

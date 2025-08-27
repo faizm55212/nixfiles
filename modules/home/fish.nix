@@ -13,6 +13,14 @@
       vim = "nvim";
       v = "nvim";
       sv = "sudo -E nvim";
+
+      # Docker, k8s, TF and TG related aliases
+      d = "docker";
+      k = "kubectl";
+      tf = "terraform";
+      tg = "terragrunt";
+      
+      # NixOS and home-manager related aliases
       update = "sudo nixos-rebuild switch --flake /home/unknown/nixfiles#unknown";
       update-boot = "sudo nixos-rebuild boot --flake /home/unknown/nixfiles#unknown";
       nix-gc = "sudo nix-collect-garbage -d && nix-collect-garbage -d";

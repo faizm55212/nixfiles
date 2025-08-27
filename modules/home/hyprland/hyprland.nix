@@ -89,7 +89,8 @@ in
       env = [
         "NIXOS_OZONE_WL, 1"
         "ELECTRON_OZONE_PLATFORM_HINT,wayland"
-        "QS_ICON_THEME, Papirus"
+        "QS_ICON_THEME,hicolor"
+        "QT_QPA_PLATFORMTHEME,gtk3"
       ];
     };
   };
