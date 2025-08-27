@@ -11,7 +11,7 @@
         enable = true;
       };
       general.apps.terminal = ["kitty"];
-      osd.sliders.showBrightnessSlider = true;
+      osd.enableBrightness = true;
       services.useFahrenheit = false;
     };
     cli = {
