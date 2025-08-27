@@ -59,13 +59,14 @@
       isNormalUser = true;
       shell = pkgs.fish;
       extraGroups = [
-        "wheel"
-        "video"
         "audio"
-        "input"
-        "networkmanager"
-        "libvirtd"
+        "docker"
         "i2c"
+        "input"
+        "libvirtd"
+        "networkmanager"
+        "video"
+        "wheel"
       ];
       ignoreShellProgramCheck = true;
     };
@@ -99,13 +100,16 @@
   ];
 
   # Virtualization via libvirt
-  virtualisation.libvirtd = {
-    enable = true;
-    extraConfig = ''
-      unix_sock_group = "libvirtd"
-      unix_sock_ro_perms = "0777"
-      unix_sock_rw_perms = "0770"
-    '';
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      extraConfig = ''
+        unix_sock_group = "libvirtd"
+        unix_sock_ro_perms = "0777"
+        unix_sock_rw_perms = "0770"
+      '';
+    };
+    docker.enable = true;
   };
   xdg.portal = {
     enable = true;
