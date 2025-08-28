@@ -6,14 +6,8 @@ let
 in
 {
   imports = [
-    # ./eww.nix
-    ./bash.nix
-    ./caelestia.nix
-    ./fish.nix
-    ./hyprland/hyprland.nix
-    ./kitty.nix
-    ./misc.nix
-    ./theme.nix
+    ./programs/defaults.nix
+    ./services/defaults.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -24,13 +18,13 @@ in
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    caelestia-shell
-    docker
+    btop
+    gammastep
     grim
     guestfs-tools
-    helm
     kitty
     kubernetes
+    kubernetes-helm
     libguestfs
     libnotify
     neovim

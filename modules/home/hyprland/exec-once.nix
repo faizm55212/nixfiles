@@ -7,5 +7,6 @@
   # Eww stuff
   # "${eww}/init.sh"
   "systemctl --user restart caelestia"
+  "systemctl --user restart gammastep"
 ]
 

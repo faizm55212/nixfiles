@@ -16,31 +16,13 @@
     experimental-features = [ "nix-command" "flakes" ];
   };
 
-  networking.hostName = "unknown"; # Define your hostname.
-  # Pick only one of the below networking options.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.hostName = "unknown";
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time = {
     timeZone = "Asia/Kolkata";
     hardwareClockInLocalTime = true;
-  };
-  
-  # Enabled Nvidia Drivers for my Desktop
-  services = {
-    xserver = {
-      enable = false;
-      videoDrivers = [ "nvidia" ];
-    };
-    greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --remember --remember-session --time --cmd hyprland";
-          user = "greeter";
-        };
-      };
-    };
   };
 
   programs = {
@@ -109,20 +91,10 @@
         unix_sock_rw_perms = "0770"
       '';
     };
-    docker.enable = true;
-  };
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
-    ];
-    config.common.default = [
-      "hyprland"
-      "gtk"
-    ];
+    docker = {
+      enable = true;
+      package = pkgs.docker;
+    };
   };
 
   # Allow Unfree
