@@ -11,7 +11,9 @@
         useOSProber = true;
         efiSupport = true;
         devices = [ "nodev" ];
+        splashImage = ./splash_image.jpg;
       };
     };
+    plymouth.enable = true;
   };
 }

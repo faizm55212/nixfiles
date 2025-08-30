@@ -74,6 +74,7 @@
     jq
     libvirt
     nodejs
+    ntfs3g
     python3
     stdenv.cc
     rustc
