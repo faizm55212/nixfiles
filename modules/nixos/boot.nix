@@ -1,11 +1,16 @@
-# /etc/nixos/nvidia.nix
-{ config, pkgs, lib, ... }:
-
+{ pkgs, ... }:
 {
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
+    kernelParams = [ 
+      "quiet"
+      "splash"
+      "nowatchdog"
+      "udev.log_level=3"
+    ];
+    consoleLogLevel = 0;
+    initrd.verbose = true;
     loader = {
-      efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
         useOSProber = true;
@@ -13,7 +18,12 @@
         devices = [ "nodev" ];
         splashImage = ./splash_image.jpg;
       };
+      efi.canTouchEfiVariables = true;
     };
-    plymouth.enable = true;
+    plymouth = {
+      enable = true;
+      theme = "mac-style";
+      themePackages = [ pkgs.mac-style-plymouth ];
+    };
   };
 }

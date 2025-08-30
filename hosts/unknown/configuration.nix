@@ -99,6 +99,11 @@
   };
 
   # Allow Unfree
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      inputs.mac-style-plymouth.overlays.default
+    ];
+  };
   system.stateVersion = "25.05";
 }

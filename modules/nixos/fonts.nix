@@ -1,4 +1,3 @@
-# /etc/nixos/nvidia.nix
 { pkgs, ... }:
 
 {

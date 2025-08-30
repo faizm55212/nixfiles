@@ -2,7 +2,7 @@
   #"noblur, xwayland:1" # Helps prevent odd borders/shadows for xwayland apps
   # downside it can impact other xwayland apps
   # This rule is a template for a more targeted approach
-  "noblur, class:^(\bresolve\b)$, xwayland:1" # Window rule for just resolve
+  "prop noblur, class:^(\bresolve\b)$, xwayland:1" # Window rule for just resolve
   "tag +file-manager, class:^([Tt]hunar|org.gnome.Nautilus|[Pp]cmanfm-qt)$"
   "tag +terminal, class:^(foot|kitty)$"
   "tag +browser, class:^(Brave-browser(-beta|-dev|-unstable)?)$"
@@ -30,8 +30,8 @@
   "center, class:^(pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol)$"
   "center, class:([Tt]hunar), title:negative:(.*[Tt]hunar.*)"
   "center, title:^(Authentication Required)$"
-  "idleinhibit fullscreen, class:^(*)$"
-  "idleinhibit fullscreen, title:^(*)$"
+  "idleinhibit fullscreen, class:.*"
+  "idleinhibit fullscreen, title:.*"
   "idleinhibit fullscreen, fullscreen:1"
   "float, tag:settings*"
   "float, class:^([Ff]erdium)$"
@@ -56,5 +56,5 @@
   "opacity 0.8 0.7, class:^(gedit|org.gnome.TextEditor|mousepad)$"
   "opacity 0.9 0.8, class:^(seahorse)$ # gnome-keyring gui"
   "suppressevent maximize, class:.*"
-  "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+  "prop nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
 ]
