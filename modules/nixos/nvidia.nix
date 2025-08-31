@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  boot.kernelModules = [ "kvm-amd" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "i2c-dev" ];
   hardware = {
     i2c.enable = true;
     enableAllFirmware = true;
