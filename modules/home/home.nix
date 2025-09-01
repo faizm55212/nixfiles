@@ -1,9 +1,4 @@
 { config, pkgs, inputs, ... }:
-let
-  caelestia-shell = inputs.caelestia-shell.packages."x86_64-linux".default.override {
-    withCli = true;
-  };
-in
 {
   imports = [
     ./programs/defaults.nix
@@ -13,9 +8,6 @@ in
   # manage.
   home.username = "unknown";
   home.homeDirectory = "/home/unknown";
-
-  # Allow Unfree
-  nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
     btop
@@ -27,8 +19,8 @@ in
     kubernetes-helm
     libguestfs
     libnotify
-    neovim
     openssl
+    ripgrep
     qemu_kvm
     starship
     swappy

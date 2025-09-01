@@ -60,8 +60,8 @@ in
       input = {
         kb_layout = "us";
         numlock_by_default = true;
-        repeat_rate = 50;
-        repeat_delay = 300;
+        repeat_rate = 25;
+        repeat_delay = 500;
         follow_mouse = 1;
         sensitivity = 0;
       };

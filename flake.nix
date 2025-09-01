@@ -8,13 +8,17 @@
       url = "github:faizm55212/mac-plymouth-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, caelestia-shell, ... }@inputs: 
+  outputs = { self, nixpkgs, ... }@inputs: 
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs {

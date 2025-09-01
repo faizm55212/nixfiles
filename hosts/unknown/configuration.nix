@@ -55,11 +55,13 @@
   };
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+    useGlobalPkgs = true;
     users = {
       "unknown" = { ... }: {
         imports = [ 
           ../../modules/home/home.nix
           inputs.caelestia-shell.homeManagerModules.default
+          inputs.nixvim.homeModules.nixvim
         ];
       };
     };
