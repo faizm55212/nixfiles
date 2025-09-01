@@ -24,9 +24,7 @@ in
         allow_tearing = false;
         layout = "dwindle";
       };
-      exec-once = import ./exec-once.nix{
-        # inherit eww;
-      };
+      exec-once = import ./exec-once.nix;
       animations = import ./animations-default.nix;
       decoration = {
         rounding = 10;
@@ -58,18 +56,25 @@ in
         disable_hyprland_logo = true;
       };
       input = {
+        follow_mouse = 1;
         kb_layout = "us";
+        kb_options = "caps:escape";
         numlock_by_default = true;
         repeat_rate = 25;
         repeat_delay = 500;
-        follow_mouse = 1;
         sensitivity = 0;
       };
       exec = [ "hyprctl dispatch submap global" ];
       # Define submap
       submap = "global";
       bind = import ./binds.nix {
-        inherit terminal fileManager menu super super_shift;
+        inherit
+          terminal
+          fileManager
+          menu
+          super
+          super_shift
+          ;
       };
       bindm = [
         "${super}, mouse:272, movewindow"

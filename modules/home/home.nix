@@ -1,8 +1,8 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [
-    ./programs/defaults.nix
-    ./services/defaults.nix
+    ./programs
+    ./services
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -19,7 +19,6 @@
     kubernetes-helm
     libguestfs
     libnotify
-    openssl
     ripgrep
     qemu_kvm
     starship

@@ -6,8 +6,8 @@
     ./fish.nix
     ./kitty.nix
     ./misc.nix
-    ./nixvim.nix
+    ./nixvim
     ./theme.nix
-    ../hyprland/hyprland.nix
+    ./hyprland
   ];
 }
