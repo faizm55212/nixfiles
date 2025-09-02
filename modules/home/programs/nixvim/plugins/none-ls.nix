@@ -9,6 +9,11 @@
   sources.diagnostics = {
     ansiblelint.enable = true;
     hadolint.enable = true;
-    yamllint.enable = true;
+    yamllint = {
+      enable = true;
+      settings = {
+        disabled_filetypes = ["helm"];
+      };
+    };
   };
 }

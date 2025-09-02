@@ -14,6 +14,8 @@
     gammastep
     grim
     guestfs-tools
+    helm-ls
+    inotify-tools
     kitty
     kubernetes
     kubernetes-helm
@@ -29,6 +31,7 @@
     virt-manager
     vscode
     wl-clipboard
+    yaml-language-server
   ];
   home.sessionVariables = {
     EDITOR = "nvim";

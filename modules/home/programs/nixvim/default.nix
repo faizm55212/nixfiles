@@ -1,12 +1,15 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.nixvim = {
     enable = true;
+    filetype.pattern = {
+      ".*/templates/.*%.yaml" = "helm";
+    };
     autoCmd = import ./autocmd.nix;
     clipboard = {
       register = "unnamedplus";
-      providers.wl-copy .enable = true;
+      providers.wl-copy.enable = true;
     };
     colorschemes.gruvbox-material-nvim = {
       enable = true;
@@ -17,13 +20,14 @@
         };
       };
     };
+    diagnostic.settings = import ./diagnostic.nix;
     globals = {
       mapleader = " ";
       maplocalleader = " ";
     };
     keymaps = import ./keymaps.nix;
     opts = import ./options.nix;
-    plugins = import ./plugins;
     nixpkgs.useGlobalPackages = true;
+    plugins = import ./plugins;
   };
 }

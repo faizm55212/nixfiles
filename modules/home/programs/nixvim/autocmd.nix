@@ -9,6 +9,11 @@
   {
     event = "BufWritePre";
     pattern = [ "*" ];
-    command = "lua vim.lsp.buf.format({ async = false })";
+    command = "lua if vim.bo.filetype ~= 'helm' then vim.lsp.buf.format({ async = false }) end";
   }
+  # {
+  #   event = "FileType";
+  #   pattern = [ "helm" ];
+  #   command = "LspRestart";
+  # }
 ]
