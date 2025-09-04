@@ -67,7 +67,7 @@ in
       exec = [ "hyprctl dispatch submap global" ];
       # Define submap
       submap = "global";
-      bind = import ./binds.nix {
+      bind = import ./keybinds.nix {
         inherit
           terminal
           fileManager
