@@ -1,6 +1,6 @@
 {
+  bufferline = import ./bufferline.nix;
   cmp = import ./cmp.nix;
-  # helm.enable = true;
   lualine.enable = true;
   lazygit = {
     enable = true;
