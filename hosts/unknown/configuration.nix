@@ -4,20 +4,19 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/nixos/defaults.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/nixos
+  ];
 
   nix.settings = {
     auto-optimise-store = true;
     warn-dirty = false;
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
-
-  networking.hostName = "unknown";
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time = {
@@ -57,13 +56,15 @@
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
     users = {
-      "unknown" = { ... }: {
-        imports = [ 
-          ../../modules/home/home.nix
-          inputs.caelestia-shell.homeManagerModules.default
-          inputs.nixvim.homeModules.nixvim
-        ];
-      };
+      "unknown" =
+        { ... }:
+        {
+          imports = [
+            ../../modules/home/home.nix
+            inputs.caelestia-shell.homeManagerModules.default
+            inputs.nixvim.homeModules.nixvim
+          ];
+        };
     };
   };
 

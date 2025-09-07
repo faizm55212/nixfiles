@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   hardware = {
@@ -11,7 +11,7 @@
       modesetting.enable = true;
       powerManagement.enable = false;
       powerManagement.finegrained = false;
-#      package = config.boot.kernelPackages.nvidiaPackages.production;
+      #      package = config.boot.kernelPackages.nvidiaPackages.production;
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
         version = "580.76.05";
         sha256_64bit = "sha256-IZvmNrYJMbAhsujB4O/4hzY8cx+KlAyqh7zAVNBdl/0=";
@@ -21,5 +21,5 @@
         persistencedSha256 = "sha256-bs3bUi8LgBu05uTzpn2ugcNYgR5rzWEPaTlgm0TIpHY=";
       };
     };
- };
+  };
 }

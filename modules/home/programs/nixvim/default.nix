@@ -3,6 +3,7 @@
     enable = true;
     filetype.pattern = {
       ".*/templates/.*%.yaml" = "helm";
+      ".*/templates/.*%.yml" = "helm";
     };
     autoCmd = import ./autocmd.nix;
     clipboard = {

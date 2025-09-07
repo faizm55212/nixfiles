@@ -2,8 +2,9 @@
 {
   imports = [
     ./boot.nix
-    ./nvidia.nix
     ./fonts.nix
+    ./networking.nix
+    ./nvidia.nix
     ./pipewire.nix
     ./services.nix
   ];

@@ -7,6 +7,7 @@
   "CTRL_ALT, Q, exec, sh -c \"hyprctl dispatch exit && rm -rf /run/user/1000/hypr \""
   "${super}, E, exec, ${fileManager}"
   "${super}, V, togglefloating"
+  "${super}, F, fullscreen"
   "${super}, D, exec, ${menu}"
   "${super}, P, pseudo"
   "${super}, J, togglesplit"

@@ -2,7 +2,11 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; 
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     caelestia-shell.url = "github:caelestia-dots/shell";
     mac-style-plymouth = {
       url = "github:faizm55212/mac-plymouth-theme";
@@ -10,10 +14,6 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    home-manager = {
-      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -24,7 +24,9 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [ inputs.mac-style-plymouth.overlays.default ];
+      overlays = [ 
+        inputs.mac-style-plymouth.overlays.default
+      ];
     };
   in
   {

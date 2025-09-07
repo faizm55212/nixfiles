@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./programs
@@ -21,8 +21,8 @@
     kubernetes-helm
     libguestfs
     libnotify
-    ripgrep
     qemu_kvm
+    ripgrep
     starship
     swappy
     terraform
