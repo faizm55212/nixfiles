@@ -1,9 +1,9 @@
 { super, super_shift, terminal, fileManager, menu }:
 [
-   "${super}, SPACE, exec, caelestia shell drawers toggle launcher"
+  "${super}, SPACE, exec, caelestia shell drawers toggle launcher"
 
   "${super}, X, exec, ${terminal}"
-  "${super_shift}, Q, killactive"
+  "${super}, Q, killactive"
   "CTRL_ALT, Q, exec, sh -c \"hyprctl dispatch exit && rm -rf /run/user/1000/hypr \""
   "${super}, E, exec, ${fileManager}"
   "${super}, V, togglefloating"

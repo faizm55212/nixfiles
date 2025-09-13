@@ -5,6 +5,7 @@
     settings = {
       bar.status = {
         showBattery = false;
+        showLockStatus = false;
       };
       paths.wallpaperDir = "~/Pictures/Wallpapers/";
       launcher = {
