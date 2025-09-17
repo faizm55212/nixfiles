@@ -4,7 +4,6 @@
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
-      starship init fish | source
       set -gx TERM xterm-kitty
       cat ~/.local/state/caelestia/sequences.txt 2> /dev/null
     '';

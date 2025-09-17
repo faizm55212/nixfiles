@@ -23,7 +23,6 @@
     libnotify
     qemu_kvm
     ripgrep
-    starship
     swappy
     terraform
     terragrunt
