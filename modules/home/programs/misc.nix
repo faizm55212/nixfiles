@@ -3,6 +3,7 @@
 {
   programs.git = {
     enable = true;
+    lfs.enable = true;
     userName = "faizm55212";
     userEmail = "faizm55212@gmail.com";
   };
@@ -20,7 +21,7 @@
     };
   };
   programs.ssh = {
-    enable = true;
+    enable = false;
     enableDefaultConfig = false;
     matchBlocks = {
       "github.com" = {

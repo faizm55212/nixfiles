@@ -24,18 +24,6 @@
       device = "/dev/disk/by-uuid/a44fb9b2-bd12-4db7-abc6-5c46d2302557";
       fsType = "ext4";
     };
-    fileSystems."/mnt/windows/E" = {
-      device = "/dev/disk/by-uuid/A2806E4D806E284D";
-      fsType = "ntfs-3g";
-      options = [
-        "rw"
-        "uid=1000"
-        "gid=100"
-        "noauto"
-        "nofail"
-        "x-systemd.automount"
-      ];
-    };
 
   swapDevices = [ ];
 

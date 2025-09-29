@@ -13,8 +13,7 @@
       v = "nvim";
       sv = "sudo -E nvim";
 
-      # Docker, k8s, TF and TG related aliases
-      d = "docker";
+      # k8s, TF and TG related aliases
       k = "kubectl";
       tf = "terraform";
       tg = "terragrunt";

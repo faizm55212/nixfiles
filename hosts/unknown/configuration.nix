@@ -77,12 +77,12 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     cargo
+    dig
     ddcutil
     git
     jq
     libvirt
     nodejs
-    ntfs3g
     (prismlauncher.override {
       additionalPrograms = [ ffmpeg ];
       jdks = [ jdk21 ];
@@ -94,7 +94,7 @@
     wget
   ];
 
-  # Virtualization via libvirt
+  # Virtualization
   virtualisation = {
     libvirtd = {
       enable = true;
@@ -106,7 +106,9 @@
     };
     docker = {
       enable = true;
-      package = pkgs.docker;
+      daemon.settings = {
+        iptables = false;
+      };
     };
   };
 

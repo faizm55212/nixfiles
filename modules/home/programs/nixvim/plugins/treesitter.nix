@@ -5,7 +5,6 @@
   settings = {
     ensureInstalled = [
       "bash"
-      "dockerfile"
       "gotmpl"
       "helm"
       "hcl"
