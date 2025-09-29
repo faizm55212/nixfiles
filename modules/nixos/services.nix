@@ -20,7 +20,7 @@
       };
     };
     openssh = {
-      enable = true;
+      enable = false;
       startWhenNeeded = true;
       settings = {
         PasswordAuthentication = false;

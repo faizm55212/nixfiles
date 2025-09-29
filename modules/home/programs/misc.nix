@@ -21,7 +21,7 @@
     };
   };
   programs.ssh = {
-    enable = false;
+    enable = true;
     enableDefaultConfig = false;
     matchBlocks = {
       "github.com" = {
