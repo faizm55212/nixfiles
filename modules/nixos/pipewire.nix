@@ -24,22 +24,14 @@
             }
           ]
         '')
-
-        # Set analog output as default by raising its session priority
-        (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/60-default-sink.conf" ''
-          monitor.alsa.rules = [
-            {
-              matches = [
-                { node.name = ~"alsa_output.*analog-stereo" }
-              ]
-              actions = {
-                update-props = {
-                  "node.priority.session" = 10000
-                  "node.description" = "Default Analog Output"
-                }
-              }
-            }
-          ]
+        # bluetooth config
+        (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/50-bluez.conf" ''
+          monitor.bluez.properties = {
+            bluez5.enable-sbc-xq = true
+            bluez5.enable-msbc = true
+            bluez5.enable-hw-volume = true
+            bluez5.codecs = [ sbc sbc_xq aac ]
+          }
         '')
       ];
     };
