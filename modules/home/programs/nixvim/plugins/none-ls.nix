@@ -2,7 +2,7 @@
   enable = true;
   sources.formatting = {
     black.enable = true;
-    nixpkgs_fmt.enable = true;
+    nixfmt.enable = true;
     shfmt.enable = true;
     terraform_fmt.enable = true;
   };
@@ -12,7 +12,7 @@
     yamllint = {
       enable = true;
       settings = {
-        disabled_filetypes = ["helm"];
+        disabled_filetypes = [ "helm" ];
       };
     };
   };
