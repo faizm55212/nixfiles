@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   programs.nixvim = {
     enable = true;
     filetype.pattern = {
@@ -28,5 +28,27 @@
     opts = import ./options.nix;
     nixpkgs.useGlobalPackages = true;
     plugins = import ./plugins;
+    extraPackages = with pkgs; [
+      # extras
+      lazygit
+      ripgrep
+
+      # formatter
+      alejandra
+      stylua
+
+      # linter
+      kube-linter
+
+      # lsp servers
+      bash-language-server
+      gopls
+      helm-ls
+      lua-language-server
+      nixd
+      pyright
+      terraform-ls
+      yaml-language-server
+    ];
   };
 }

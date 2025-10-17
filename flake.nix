@@ -7,7 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    caelestia-shell.url = "github:caelestia-dots/shell";
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     mac-style-plymouth = {
       url = "github:faizm55212/mac-plymouth-theme";
       inputs.nixpkgs.follows = "nixpkgs";

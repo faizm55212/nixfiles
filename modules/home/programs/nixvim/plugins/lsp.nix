@@ -3,7 +3,18 @@
   servers = {
     bashls.enable = true;
     helm_ls.enable = true;
-    nil_ls.enable = true;
+    gopls.enable = true;
+    nixd = {
+      enable = true;
+      settings = {
+        options = {
+          "nixos" = {
+            "expr" = ''
+              (builtins.getFlake "/home/unknown/nixfiles").nixosConfigurations.unknown.options'';
+          };
+        };
+      };
+    };
     pyright.enable = true;
     qmlls.enable = true;
     terraformls.enable = true;
@@ -19,8 +30,7 @@
             "http://json.schemastore.org/ansible-playbook" = "*play*.{yml,yaml}";
             "http://json.schemastore.org/chart" = "Chart.{yml,yaml}";
             "https://json.schemastore.org/dependabot-v2" = ".github/dependabot.{yml,yaml}";
-            "https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json" =
-              "*flow*.{yml,yaml}";
+            "https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json" = "*flow*.{yml,yaml}";
           };
         };
       };

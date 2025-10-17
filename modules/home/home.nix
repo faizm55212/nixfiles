@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./programs
     ./services
@@ -13,8 +12,8 @@
     btop
     gammastep
     grim
+    go
     guestfs-tools
-    helm-ls
     inotify-tools
     kitty
     kubernetes
@@ -22,7 +21,6 @@
     libguestfs
     libnotify
     qemu_kvm
-    ripgrep
     swappy
     terraform
     terragrunt
@@ -30,7 +28,6 @@
     virt-manager
     vscode
     wl-clipboard
-    yaml-language-server
   ];
   home.sessionVariables = {
     EDITOR = "nvim";

@@ -2,15 +2,13 @@
   bufferline = import ./bufferline.nix;
   cmp = import ./cmp.nix;
   lualine.enable = true;
-  lazygit = {
-    enable = true;
-  };
+  lazygit.enable = true;
   lsp = import ./lsp.nix;
   lz-n.enable = true;
   markview.enable = true;
   neo-tree = {
     enable = true;
-    closeIfLastWindow = true;
+    settings.close_if_last_window = true;
   };
   noice = import ./noice.nix;
   none-ls = import ./none-ls.nix;

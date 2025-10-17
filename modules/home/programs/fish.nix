@@ -12,6 +12,7 @@
       vim = "nvim";
       v = "nvim";
       sv = "sudo -E nvim";
+      vimdiff = "nvim -d";
 
       # k8s, TF and TG related aliases
       k = "kubectl";

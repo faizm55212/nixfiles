@@ -1,14 +1,12 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config
-, lib
-, pkgs
-, inputs
-, ...
-}:
-
 {
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
@@ -58,18 +56,16 @@
     };
   };
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
     useGlobalPkgs = true;
     users = {
-      "unknown" =
-        { ... }:
-        {
-          imports = [
-            ../../modules/home/home.nix
-            inputs.caelestia-shell.homeManagerModules.default
-            inputs.nixvim.homeModules.nixvim
-          ];
-        };
+      "unknown" = {...}: {
+        imports = [
+          ../../modules/home/home.nix
+          inputs.caelestia-shell.homeManagerModules.default
+          inputs.nixvim.homeModules.nixvim
+        ];
+      };
     };
   };
 
@@ -84,8 +80,8 @@
     libvirt
     nodejs
     (prismlauncher.override {
-      additionalPrograms = [ ffmpeg ];
-      jdks = [ jdk21 ];
+      additionalPrograms = [ffmpeg];
+      jdks = [jdk21];
     })
     python3
     stdenv.cc
