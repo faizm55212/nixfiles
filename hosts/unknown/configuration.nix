@@ -33,6 +33,7 @@
       xwayland.enable = true;
     };
     firefox.enable = true;
+    nix-ld.enable = true;
   };
 
   security.rtkit.enable = true;
@@ -63,7 +64,6 @@
         imports = [
           ../../modules/home/home.nix
           inputs.caelestia-shell.homeManagerModules.default
-          inputs.nixvim.homeModules.nixvim
         ];
       };
     };

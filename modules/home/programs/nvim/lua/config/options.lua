@@ -6,6 +6,7 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.swapfile = false
 vim.opt.undofile = true
+vim.opt.laststatus = 3
 vim.g.editorconfig = true
 
 -- clipboard --
@@ -27,12 +28,18 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
--- seach --
+-- search --
 vim.opt.incsearch = true
 vim.opt.inccommand = "split"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = true
+
+-- fold options --
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false
+
 
 -- diagnostics --
 vim.diagnostic.config({

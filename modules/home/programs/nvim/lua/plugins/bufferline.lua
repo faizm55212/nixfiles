@@ -1,5 +1,17 @@
 return {
   {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {
+      options = {
+        theme = "gruvbox-material",
+      },
+    },
+  },
+  {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
     dependencies = {

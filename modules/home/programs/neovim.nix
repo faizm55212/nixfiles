@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  programs.neovim = {
+   programs.neovim = {
     enable = true;
     extraPackages = with pkgs; [
       # extras
@@ -8,23 +8,12 @@
       mermaid-cli
       ripgrep
       tectonic
-
-      # formatter
-      alejandra
-      stylua
+      nixd
+      clang-tools
 
       # linter
       kube-linter
 
-      # lsp servers
-      bash-language-server
-      gopls
-      helm-ls
-      lua-language-server
-      nixd
-      pyright
-      terraform-ls
-      yaml-language-server
     ];
   };
   home.file.".config/nvim".source = ./nvim;

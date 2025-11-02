@@ -1,17 +1,16 @@
-{ config, pkgs, ... }:
-
 {
   programs.git = {
     enable = true;
     lfs.enable = true;
-    userName = "faizm55212";
-    userEmail = "faizm55212@gmail.com";
+    settings.user = {
+      name = "faizm55212";
+      email = "faizm55212@gmail.com";
+    };
   };
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
     enableFishIntegration = true;
-    package = pkgs.starship;
     settings = {
       add_newline = false;
       character = {
