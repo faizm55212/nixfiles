@@ -16,8 +16,8 @@ return {
       telescope.load_extension("ui-select")
     end,
     keys = {
-      { "<leader>ts", "<cmd>Telescope live_grep<cr>", desc = "Search grep" },
-      { "<leader>tq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix list" },
+      { "<leader>tf", "<cmd>Telescope live_grep<cr>", desc = "Search grep" },
+      { "<leader>tq", "<cmd>Telescope quickfix<cr>",  desc = "Quickfix list" },
     },
   },
   {
@@ -32,7 +32,15 @@ return {
       close_if_last_window = true,
       enable_git_status = true,
       enable_diagnostics = true,
+      popup_border_style = "",
+      default_component_configs = {
+        git_status = {
+          symbols = {
+            unstaged  = "󰝦",
+            untracked = "",
+          },
+        },
+      },
     },
   },
 }
-

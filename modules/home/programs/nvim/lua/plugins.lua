@@ -15,7 +15,7 @@ return {
     cmd = "Trouble",
     keys = {
       {
-        "<leader>td",
+        "<leader>cd",
         "<cmd>Trouble diagnostics toggle focus=true<cr>",
         desc = "Diagnostics (Trouble)",
       },
@@ -36,5 +36,21 @@ return {
         desc = "Buffer Local Keymaps (which-key)",
       },
     },
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    keys = {
+      {
+        "<leader>gb",
+        "<cmd>Gitsigns toggle_current_line_blame<cr>",
+        desc = "git blame toggle"
+      },
+      {
+        "<leader>gd",
+        "<cmd>Gitsigns diffthis<cr>",
+        desc = "git diff this"
+      }
+    }
   },
 }

@@ -36,3 +36,8 @@ map("n", "<Tab>", "<cmd>bnext<cr>", {
 	noremap = true,
 	desc = "GoTo Next Tab",
 })
+map("n", "<S-Tab>", "<cmd>bprevious<cr>", {
+	silent = true,
+	noremap = true,
+	desc = "GoTo Previous Tab",
+})

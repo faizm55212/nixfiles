@@ -1,4 +1,3 @@
----@diagnostic disable: missing-fields
 return {
   {
     "neovim/nvim-lspconfig",
@@ -31,10 +30,12 @@ return {
         vim.lsp.config(server, { capabilities = capabilities })
         vim.lsp.enable(server)
       end
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
-      vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, {})
+      vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover, { desc = "Code hover" })
+      vim.keymap.set("n", "<leader>cgd", vim.lsp.buf.definition, { desc = "Code goto definition" })
+      vim.keymap.set("n", "<leader>cgD", vim.lsp.buf.declaration, { desc = "Code goto declaration" })
+      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })
+      vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "Code formatting" })
+      vim.keymap.set("n", "<leader>cgr", vim.lsp.buf.rename, { desc = "Code smart rename" })
     end,
   },
   {

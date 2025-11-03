@@ -40,15 +40,23 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
 
-
 -- diagnostics --
+local severity = vim.diagnostic.severity
+
 vim.diagnostic.config({
   virtual_text = {
     source = false,
-    prefix = "●",
+    prefix = "",
     spacing = 2,
   },
-  signs = true,
+  signs = {
+    text = {
+      [severity.ERROR] = " ",
+      [severity.WARN] = " ",
+      [severity.HINT] = "󰠠 ",
+      [severity.INFO] = " ",
+    },
+  },
   underline = true,
   update_in_insert = true,
   severity_sort = false,

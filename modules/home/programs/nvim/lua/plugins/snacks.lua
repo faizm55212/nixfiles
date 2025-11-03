@@ -11,17 +11,18 @@ return {
             override = {
               ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
               ["vim.lsp.util.stylize_markdown"] = true,
-              ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+              ["cmp.entry.get_documentation"] = true,
             },
           },
           presets = {
-            long_message_to_split = true, -- long messages will be sent to a split
-            lsp_doc_border = false, -- add a border to hover docs and signature help
+            long_message_to_split = true,
+            lsp_doc_border = false,
           },
         },
       },
     },
     opts = {
+      indent = { enabled = true },
       lazygit = { enabled = true },
       notifier = { enabled = true },
       terminal = { enabled = true },
@@ -53,7 +54,7 @@ return {
         function()
           require("snacks").terminal()
         end,
-        desc = "lazygit",
+        desc = "Open terminal",
       },
     },
   },
