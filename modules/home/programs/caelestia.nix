@@ -2,16 +2,25 @@
   programs.caelestia = {
     enable = true;
     settings = {
-      bar.status = {
-        showBattery = false;
-        showLockStatus = false;
+      bar = {
+        status = {
+          showBattery = false;
+          showLockStatus = false;
+        };
       };
-      paths.wallpaperDir = "~/Pictures/Wallpapers/";
       launcher = {
         enable = true;
+        hiddenApps = [
+          "btop"
+          "gammastep-indicator"
+          "foot"
+          "footclient"
+          "foot-server"
+          "nvim"
+        ];
       };
       general = {
-        apps.terminal = ["kitty"];
+        apps.terminal = ["foot"];
         idle.timeouts = [
           {
             "timeout" = 300;
@@ -29,7 +38,11 @@
         ];
       };
       osd.enableBrightness = true;
-      services.useFahrenheit = false;
+      paths.wallpaperDir = "~/Pictures/Wallpapers/";
+      services = {
+        useFahrenheit = false;
+        weatherLocation = "12.9629,77.5775";
+      };
     };
     cli = {
       enable = true;

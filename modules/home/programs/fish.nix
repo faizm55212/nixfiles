@@ -4,7 +4,7 @@
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
-      set -gx TERM xterm-kitty
+      set -gx TERM foot
       cat ~/.local/state/caelestia/sequences.txt 2> /dev/null
     '';
     shellAliases = {

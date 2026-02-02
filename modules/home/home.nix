@@ -13,20 +13,19 @@
     gammastep
     grim
     go
-    guestfs-tools
+    # guestfs-tools
     inotify-tools
-    kitty
     kubernetes
     kubernetes-helm
-    libguestfs
+    # libguestfs
     libnotify
-    qemu_kvm
+    pavucontrol
+    # qemu_kvm
     swappy
     terraform
     terragrunt
     tree
-    virt-manager
-    vscode
+    # virt-manager
     wl-clipboard
   ];
   home.sessionVariables = {

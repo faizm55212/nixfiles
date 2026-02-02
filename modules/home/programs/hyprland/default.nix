@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  terminal = "kitty";
+  terminal = "foot";
   fileManager = "dolphin";
   menu = "rofi -show drun";
   super = "SUPER";

@@ -28,6 +28,7 @@
   };
 
   programs = {
+    coolercontrol.enable = true;
     hyprland = {
       enable = true;
       xwayland.enable = true;
@@ -78,11 +79,8 @@
     git
     jq
     libvirt
-    nodejs
-    (prismlauncher.override {
-      additionalPrograms = [ffmpeg];
-      jdks = [jdk21];
-    })
+    lm_sensors
+    nodejs 
     python3
     stdenv.cc
     rustc

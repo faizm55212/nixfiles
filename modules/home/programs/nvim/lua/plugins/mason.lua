@@ -6,6 +6,7 @@ return {
       ensure_installed = {
         "bashls",
         "gopls",
+        "jsonls",
         "helm_ls",
         "lua_ls",
         "pyright",

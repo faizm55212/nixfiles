@@ -14,7 +14,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "hyprland >/dev/null";
+          command = "hyprland > /dev/null";
           user = "unknown";
         };
       };

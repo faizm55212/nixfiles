@@ -1,6 +1,7 @@
 { super, super_shift, terminal, fileManager, menu }:
 [
   "${super}, SPACE, exec, caelestia shell drawers toggle launcher"
+  "${super}, L, exec, caelestia shell lock lock"
 
   "${super}, X, exec, ${terminal}"
   "${super}, Q, killactive"
