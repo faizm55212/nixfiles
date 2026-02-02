@@ -4,8 +4,8 @@
     dnscrypt-proxy = {
       enable = true;
       settings = {
-        server_names = [ "cloudflare" "cloudflare-ipv6" ];
-        ipv6_servers = true;
+        server_names = [ "cloudflare" ];
+        ipv6_servers = false;
         require_dnssec = true;
         dnscrypt_servers = false;
       };

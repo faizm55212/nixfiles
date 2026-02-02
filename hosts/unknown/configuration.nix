@@ -28,7 +28,6 @@
   };
 
   programs = {
-    coolercontrol.enable = true;
     hyprland = {
       enable = true;
       xwayland.enable = true;
@@ -79,7 +78,6 @@
     git
     jq
     libvirt
-    lm_sensors
     nodejs 
     python3
     stdenv.cc

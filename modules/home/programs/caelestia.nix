@@ -2,10 +2,16 @@
   programs.caelestia = {
     enable = true;
     settings = {
+      appearance.transparency.enabled = true;
+      background.desktopClock.enabled = true;
       bar = {
         status = {
           showBattery = false;
           showLockStatus = false;
+        };
+        tray = {
+          background = true;
+          compact = true;
         };
       };
       launcher = {
