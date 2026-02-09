@@ -15,6 +15,7 @@
       "quiet"
       "udev.log_priority=0"
       "nvidia_drm.modeset=1"
+      "hid_logitech_new.force_feedback=1"
     ];
     loader = {
       efi.canTouchEfiVariables = true;

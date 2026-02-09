@@ -10,6 +10,7 @@
 
   home.packages = with pkgs; [
     btop
+    eog
     gammastep
     grim
     go
@@ -21,6 +22,7 @@
     libnotify
     pavucontrol
     # qemu_kvm
+    steam
     swappy
     terraform
     terragrunt

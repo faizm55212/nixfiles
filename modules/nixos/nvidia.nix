@@ -4,7 +4,11 @@
   hardware = {
     i2c.enable = true;
     enableAllFirmware = true;
-    graphics.enable = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    new-lg4ff.enable = true;
     nvidia = {
       open = false;
       nvidiaSettings = true;

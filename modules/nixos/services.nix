@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   services = {
     dnscrypt-proxy = {
@@ -14,7 +14,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "hyprland > /dev/null";
+          command = "start-hyprland > /dev/null";
           user = "unknown";
         };
       };
@@ -25,6 +25,12 @@
       settings = {
         PasswordAuthentication = false;
       };
+    };
+    udev = {
+      packages = with pkgs; [ oversteer ];
+      extraRules = ''
+        ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c24f", RUN+="${pkgs.usb-modeswitch}/bin/usb_modeswitch -v 046d -p c24f -m 01 -r 01 -C 03 -M '0f00010142'"
+'';
     };
     xserver = {
       enable = false;
