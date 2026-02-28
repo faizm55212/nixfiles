@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./boot.nix
-    ./fonts.nix
     ./networking.nix
-    ./nvidia.nix
+    ./hardware.nix
     ./pipewire.nix
+    ./programs.nix
     ./services.nix
   ];
 }

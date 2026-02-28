@@ -1,11 +1,11 @@
-{ super, super_shift, terminal, fileManager, menu }:
+{ super, super_shift, ctrl_alt, terminal, fileManager, menu }:
 [
   "${super}, SPACE, exec, caelestia shell drawers toggle launcher"
   "${super}, L, exec, caelestia shell lock lock"
 
   "${super}, X, exec, ${terminal}"
   "${super}, Q, killactive"
-  "CTRL_ALT, Q, exec, sh -c \"hyprctl dispatch exit && rm -rf /run/user/1000/hypr \""
+  "${ctrl_alt}, Q, exec, sh -c \"hyprctl dispatch exit && rm -rf /run/user/1000/hypr \""
   "${super}, E, exec, ${fileManager}"
   "${super}, V, togglefloating"
   "${super}, F, fullscreen"
@@ -41,7 +41,7 @@
   "${super_shift}, 7, movetoworkspace, 7"
   "${super_shift}, 8, movetoworkspace, 8"
   "${super_shift}, 9, movetoworkspace, 9"
-  "${super_shift}, 10, movetoworkspace, 10"
+  "${super_shift}, 0, movetoworkspace, 10"
 
   # Special workspace (scratchpad)
   "${super}, S, togglespecialworkspace, magic"
@@ -50,6 +50,10 @@
   # Scroll through existing workspaces with SUPER + Scroll
   "${super}, mouse_down, workspace, e+1"
   "${super}, mouse_up, workspace, e-1"
+
+  # Screenshot
+  "${ctrl_alt}, 3, exec, grim ~/Pictures/$(date +'%Y-%m-%d_%H-%M-%S').png"
+  "${ctrl_alt}, 4, exec, grim -g \"$(slurp)\" ~/Pictures/$(date +'%Y-%m-%d_%H-%M-%S').png"
 
   # Volume and media controls
   ",XF86AudioRaiseVolume,exec,bash -c '(( $(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk \"{print int(\\$2)}\") >= 1 )) && : || wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+'"

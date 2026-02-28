@@ -56,8 +56,11 @@ in
         disable_hyprland_logo = true;
       };
       monitor = [
-        "DP-1, 2560x1440@164.96, 0x0, 1.0, bitdepth, 10, vrr, 2"
+        "DP-1, 2560x1440@164.96, 0x0, 1, bitdepth, 10, cm, hdredid, sdrbrightness, 1.2, sdrsaturation, 1.0"
       ];
+      render = {
+        cm_fs_passthrough = 1;
+      };
       input = {
         follow_mouse = 1;
         kb_layout = "us";

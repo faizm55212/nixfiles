@@ -2,13 +2,12 @@
 {
   boot = {
     consoleLogLevel = 0;
-    extraModulePackages = [ ];
     initrd = {
       verbose = false;
       availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
       kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
     };
-    kernelModules = [ "kvm-amd" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "i2c-dev" ];
+    kernelModules = [ "kvm-amd" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "i2c-dev" "nct6775" ];
     kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [ 
       "splash"

@@ -1,11 +1,7 @@
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
+pkgs,
+inputs,
+...
 }: {
   imports = [
     ./hardware-configuration.nix
@@ -27,16 +23,31 @@
     hardwareClockInLocalTime = true;
   };
 
-  programs = {
-    hyprland = {
-      enable = true;
-      xwayland.enable = true;
+  security.rtkit.enable = true;
+
+  environment = {
+    variables = {
+      LD_LIBRARY_PATH = "/run/opengl-driver/lib:/run/opengl-driver-32/lib";
     };
-    firefox.enable = true;
-    nix-ld.enable = true;
+    systemPackages = with pkgs; [
+      btrfs-progs
+      ddcutil
+      file
+      git
+      jq
+      lm_sensors
+      nodejs 
+      pavucontrol
+      python3
+      stdenv.cc
+      unzip
+      wget
+    ];
   };
 
-  security.rtkit.enable = true;
+  fonts.packages = with pkgs; [
+      nerd-fonts.mononoki
+    ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
@@ -56,6 +67,7 @@
       ignoreShellProgramCheck = true;
     };
   };
+
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
     useGlobalPkgs = true;
@@ -69,25 +81,6 @@
     };
   };
 
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
-    btrfs-progs
-    cargo
-    dig
-    ddcutil
-    git
-    jq
-    libvirt
-    nodejs 
-    oversteer
-    python3
-    stdenv.cc
-    rustc
-    unzip
-    wget
-  ];
-
   # Virtualization
   virtualisation = {
     libvirtd = {
@@ -99,7 +92,7 @@
       '';
     };
     docker = {
-      enable = true;
+      enable = false;
       daemon.settings = {
         iptables = false;
       };

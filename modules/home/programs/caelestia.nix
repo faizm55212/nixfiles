@@ -23,6 +23,8 @@
           "footclient"
           "foot-server"
           "nvim"
+          "protontricks"
+          "steam"
         ];
       };
       general = {

@@ -10,6 +10,8 @@ return {
         "helm_ls",
         "lua_ls",
         "pyright",
+        "rust_analyzer",
+        "taplo",
         "terraformls",
         "yamlls",
       },
@@ -40,7 +42,12 @@ return {
       local dgn = null_ls.builtins.diagnostics
 
       require("mason-null-ls").setup({
-        ensure_installed = { "stylua", "alejandra", "terraform_fmt" },
+        ensure_installed = {
+          "stylua",
+          "alejandra",
+          "rustfmt",
+          "terraform_fmt"
+        },
       })
 
       null_ls.setup({
@@ -48,6 +55,7 @@ return {
           fmt.alejandra,
           fmt.clang_format,
           fmt.stylua,
+          fmt.rustfmt,
           fmt.terraform_fmt,
           fmt.terragrunt_fmt,
 

@@ -9,26 +9,44 @@
   home.homeDirectory = "/home/unknown";
 
   home.packages = with pkgs; [
+    brave
     btop
-    eog
+    ffmpeg
     gammastep
+    gearlever
     grim
     go
-    # guestfs-tools
+    gthumb
     inotify-tools
+    libnotify
+    mpv
+    nemo
+    p7zip
+    rustdesk
+    slurp
+    tree
+    vulkan-hdr-layer-kwin6
+    wl-clipboard
+
+    #DevOps
     kubernetes
     kubernetes-helm
-    # libguestfs
-    libnotify
-    pavucontrol
-    # qemu_kvm
-    steam
-    swappy
     terraform
     terragrunt
-    tree
+
+    #Gaming
+    oversteer
+    protonup-qt
+    steam-run
+    (prismlauncher.override {
+      jdks = [jdk21];
+    })
+
+    #Virtualization
+    # guestfs-tools
+    # libguestfs
+    # qemu_kvm
     # virt-manager
-    wl-clipboard
   ];
   home.sessionVariables = {
     EDITOR = "nvim";

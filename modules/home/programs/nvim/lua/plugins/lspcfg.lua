@@ -23,11 +23,23 @@ return {
         "lua_ls",
         "nixd",
         "pyright",
+        "rust_analyzer",
+        "taplo",
         "terraformls",
         "yamlls",
       }
       for _, server in ipairs(servers) do
-        vim.lsp.config(server, { capabilities = capabilities })
+        local opts = { capabilities = capabilities }
+
+        if server == "rust_analyzer" then
+          opts.settings = {
+            ["rust-analyzer"] = {
+              checkOnSave = { command = "clippy" },
+            },
+          }
+        end
+
+        vim.lsp.config(server, opts)
         vim.lsp.enable(server)
       end
       vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover, { desc = "Code hover" })
@@ -52,7 +64,9 @@ return {
           "nix",
           "python",
           "qmljs",
+          "rust",
           "terraform",
+          "toml",
           "yaml",
         },
         highlight = {
