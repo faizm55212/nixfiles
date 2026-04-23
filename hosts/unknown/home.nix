@@ -1,8 +1,27 @@
-{pkgs, ...}: {
+{ pkgs, inputs, ... }: {
   imports = [
-    ./programs
-    ./services
+    ../../modules/home/programs
+    ../../modules/home/services
+    inputs.caelestia-shell.homeManagerModules.default
   ];
+
+  # Modules enable
+  modules.programs.fish.enable = true;
+  modules.programs.neovim.enable = true;
+  modules.programs.bash.enable = true;
+  modules.programs.caelestia.enable = true;
+  modules.programs.mangohud.enable = true;
+  modules.programs.foot.enable = true;
+  modules.programs.git.enable = true;
+  modules.programs.starship.enable = true;
+  modules.programs.ssh.enable = true;
+  modules.programs.zathura.enable = true;
+  modules.programs.gtk.enable = true;
+  modules.programs.hyprland.enable = true;
+
+  modules.services.gammastep.enable = true;
+  modules.services.xdg.enable = true;
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "unknown";
@@ -41,13 +60,8 @@
     (prismlauncher.override {
       jdks = [jdk21];
     })
-
-    #Virtualization
-    # guestfs-tools
-    # libguestfs
-    # qemu_kvm
-    # virt-manager
   ];
+
   home.sessionVariables = {
     EDITOR = "nvim";
     LIBVIRT_DEFAULT_URI = "qemu:///system";

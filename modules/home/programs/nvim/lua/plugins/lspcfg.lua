@@ -1,82 +1,95 @@
 return {
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "saghen/blink.cmp",
-      {
-        "folke/lazydev.nvim",
-        opts = {
-          library = {
-            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-          },
-        },
-      },
-    },
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      local capabilities = require("blink.cmp").get_lsp_capabilities()
-      local servers = {
-        "bashls",
-        "clangd",
-        "gopls",
-        "helm_ls",
-        "lua_ls",
-        "nixd",
-        "pyright",
-        "rust_analyzer",
-        "taplo",
-        "terraformls",
-        "yamlls",
-      }
-      for _, server in ipairs(servers) do
-        local opts = { capabilities = capabilities }
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"saghen/blink.cmp",
+			{
+				"folke/lazydev.nvim",
+				opts = {
+					library = {
+						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+					},
+				},
+			},
+		},
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			local is_nix_on_droid = os.getenv("NIX_ON_DROID") == "1"
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-        if server == "rust_analyzer" then
-          opts.settings = {
-            ["rust-analyzer"] = {
-              checkOnSave = { command = "clippy" },
-            },
-          }
-        end
+			-- Servers available on ALL platforms
+			local servers = {
+				"lua_ls",
+				"nil_ls",
+				"ruff",
+			}
 
-        vim.lsp.config(server, opts)
-        vim.lsp.enable(server)
-      end
-      vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover, { desc = "Code hover" })
-      vim.keymap.set("n", "<leader>cgd", vim.lsp.buf.definition, { desc = "Code goto definition" })
-      vim.keymap.set("n", "<leader>cgD", vim.lsp.buf.declaration, { desc = "Code goto declaration" })
-      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })
-      vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "Code formatting" })
-      vim.keymap.set("n", "<leader>cgr", vim.lsp.buf.rename, { desc = "Code smart rename" })
-    end,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "bash",
-          "gotmpl",
-          "helm",
-          "hcl",
-          "lua",
-          "nix",
-          "python",
-          "qmljs",
-          "rust",
-          "terraform",
-          "toml",
-          "yaml",
-        },
-        highlight = {
-          enable = true,
-        },
-        indent = {
-          enable = true,
-        },
-      })
-    end,
-    event = { "BufReadPost", "BufNewFile" },
-  },
+			if not is_nix_on_droid then
+				-- Servers to exclude on Nix-on-Droid to save space
+				table.insert(servers, "bashls")
+				table.insert(servers, "clangd")
+				table.insert(servers, "gopls")
+				table.insert(servers, "jsonls")
+				table.insert(servers, "rust_analyzer")
+				table.insert(servers, "terraformls")
+				table.insert(servers, "yamlls")
+				table.insert(servers, "helm_ls")
+				table.insert(servers, "taplo")
+			else
+				-- Servers that are specifically configured on Droid (like jsonls)
+			end
+
+			for _, server in ipairs(servers) do
+				local opts = { capabilities = capabilities }
+
+				if server == "rust_analyzer" then
+					opts.settings = {
+						["rust-analyzer"] = {
+							checkOnSave = { command = "clippy" },
+						},
+					}
+				end
+
+				vim.lsp.config(server, opts)
+				vim.lsp.enable(server)
+			end
+			vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover, { desc = "Code hover" })
+			vim.keymap.set("n", "<leader>cgd", vim.lsp.buf.definition, { desc = "Code goto definition" })
+			vim.keymap.set("n", "<leader>cgD", vim.lsp.buf.declaration, { desc = "Code goto declaration" })
+			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })
+			vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "Code formatting" })
+			vim.keymap.set("n", "<leader>cgr", vim.lsp.buf.rename, { desc = "Code smart rename" })
+		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		branch = "master",
+		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = {
+					"bash",
+					"gotmpl",
+					"hcl",
+					"helm",
+					"html",
+					"lua",
+					"nix",
+					"python",
+					"qmljs",
+					"rust",
+					"terraform",
+					"toml",
+					"yaml",
+				},
+				highlight = {
+					enable = true,
+				},
+				indent = {
+					enable = true,
+				},
+			})
+		end,
+		event = { "BufReadPost", "BufNewFile" },
+	},
 }

@@ -1,51 +1,60 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
+let
+  cfg = config.modules.programs.fish;
+in
 {
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
-      set -gx TERM foot
-      cat ~/.local/state/caelestia/sequences.txt 2> /dev/null
-    '';
-    shellAliases = {
-      ll = "ls -alF";
-      vim = "nvim";
-      v = "nvim";
-      sv = "sudo -E nvim";
-      vimdiff = "nvim -d";
+  options.modules.programs.fish = {
+    enable = lib.mkEnableOption "fish";
+  };
 
-      # k8s, TF and TG related aliases
-      k = "kubectl";
-      tf = "terraform";
-      tg = "terragrunt";
-      
-      # NixOS and home-manager related aliases
-      update = "sudo nixos-rebuild switch --flake /home/unknown/nixfiles#unknown";
-      update-boot = "sudo nixos-rebuild boot --flake /home/unknown/nixfiles#unknown";
-      nix-gc = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
-      nix-store-o = "sudo nix store optimise && nix store optimise";
-      flake-update = "cd ~/nixfiles && sudo nix flake update";
-    };
-    functions = {
-      fish_greeting = "";
-      sudo = {
-        body = ''
-          if test "$argv" = !!
-            echo sudo $history[1]
-            eval command sudo $history[1]
-          else
-            command sudo $argv
-          end
-        '';
-        description = "Replacement for Bash 'sudo !!' command to run last command using sudo."; 
+  config = lib.mkIf cfg.enable {
+    programs.fish = {
+      enable = true;
+      # interactiveShellInit = ''
+        # set -gx TERM foot
+        # cat ~/.local/state/caelestia/sequences.txt 2> /dev/null
+      # '';
+      shellAliases = {
+        ll = "ls -alF";
+        vim = "nvim";
+        v = "nvim";
+        sv = "sudo -E nvim";
+        vimdiff = "nvim -d";
+
+        # k8s, TF and TG related aliases
+        k = "kubectl";
+        tf = "terraform";
+        tg = "terragrunt";
+        
+        # NixOS and home-manager related aliases
+        update = "sudo nixos-rebuild switch --flake /home/unknown/nixfiles#unknown";
+        update-boot = "sudo nixos-rebuild boot --flake /home/unknown/nixfiles#unknown";
+        nix-gc = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
+        nix-store-o = "sudo nix store optimise && nix store optimise";
+        flake-update = "cd ~/nixfiles && sudo nix flake update";
       };
-      mpvhdr = {
-        body = ''
-          systemctl --user stop gammastep.service
-          ENABLE_HDR_WSI=1 mpv --vo=gpu-next --target-colorspace-hint --gpu-api=vulkan --gpu-context=waylandvk "$argv"
-          systemctl --user start gammastep.service
+      functions = {
+        fish_greeting = "";
+        sudo = {
+          body = ''
+            if test "$argv" = !!
+              echo sudo $history[1]
+              eval command sudo $history[1]
+            else
+              command sudo $argv
+            end
           '';
-        description = "Start mpv with hdr enabled";
+          description = "Replacement for Bash 'sudo !!' command to run last command using sudo."; 
+        };
+        mpvhdr = {
+          body = ''
+            systemctl --user stop gammastep.service
+            ENABLE_HDR_WSI=1 mpv --vo=gpu-next --target-colorspace-hint --gpu-api=vulkan --gpu-context=waylandvk "$argv"
+            systemctl --user start gammastep.service
+            '';
+          description = "Start mpv with hdr enabled";
+        };
       };
     };
   };
